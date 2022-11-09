@@ -77,7 +77,7 @@ function number(n) {
     removeActiveOperationAppearance();
     shouldOverwriteValue = false;
     decimal = false;
-  } else {
+  } else if (value.length < 9) {
     // Add to the existing number
     setValue(value + n.toString());
   }
