@@ -24,6 +24,7 @@ function setValue(newValue) {
 
   let valueElement = document.getElementById("value");
 
+  // Update the displayed text
   valueElement.innerText = value;
 
   // If necessary, scale the text to fit
@@ -33,6 +34,7 @@ function setValue(newValue) {
     valueElement.style.fontSize = "8vh";
   }
 
+  // Update the text on the clear button
   document.getElementById("clear").innerText = value == "0" ? "AC" : "C";
 }
 
@@ -46,7 +48,7 @@ function removeActiveOperationAppearance() {
 }
 
 /**
- * Adds the highlighted appearnce to the active opeation button
+ * Adds the highlighted appearnce to the active operation button
  */
 function addActiveOperationAppearance() {
   if (activeOperation !== null) {
@@ -59,15 +61,17 @@ function addActiveOperationAppearance() {
  * @param {string} op the new active operation - either "plus", "minus", "multiply", or "divide"
  */
 function setActiveOperation(op) {
+  // Remove the active operation appearance from the previous active operation button
   removeActiveOperationAppearance();
 
   activeOperation = op;
 
+  // Add the active operation appearance to the current active operation button
   addActiveOperationAppearance();
 }
 
 /**
- * Handles the input of a new number.
+ * Handles the input of a new number
  * @param {number} n the new number
  */
 function number(n) {
@@ -87,7 +91,9 @@ function number(n) {
  * Handles the input of a decimal point.
  */
 function point() {
-  if (decimal === false) {
+  if (shouldOverwriteValue) {
+    setValue("0.");
+  } else if (decimal === false) {
     setValue(value + ".");
     decimal = true;
   }
@@ -105,7 +111,7 @@ function operation(op) {
 
 /**
  * Tries to perform a calculation using the left hand side value, the current value, and the active operation
- * @returns {number | null} the result of the calculation, or null if there was no left value of active operation
+ * @returns {number | null} the result of the calculation, or null if there was no left value or active operation
  */
 function calculate() {
   if (leftValue !== null && activeOperation !== null) {
@@ -135,6 +141,7 @@ function equals() {
 
   if (result !== null) {
     setValue(result.toString());
+    shouldOverwriteValue = true;
 
     setActiveOperation(null);
     leftValue = null;
