@@ -81,6 +81,9 @@ function number(n) {
     removeActiveOperationAppearance();
     shouldOverwriteValue = false;
     decimal = false;
+  } else if (value === "-0") {
+    // Allow the user to press the negate button before their input
+    setValue(`-${n}`)
   } else if (value.length < 9 || (value[0] === "-" && value.length < 10)) {
     // Add to the existing number
     setValue(value + n.toString());
@@ -164,7 +167,7 @@ function c() {
  * Negates the current value, and updates the user interface accordingly
  */
 function negate() {
-  setValue((-parseFloat(value)).toString());
+  setValue(`-${value}`);
 }
 
 /**
