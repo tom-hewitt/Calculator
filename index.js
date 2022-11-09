@@ -9,8 +9,8 @@ let leftValue = null;
 // The operation just clicked by the user, if there is one
 let activeOperation = null;
 
-// Whether or not an operation has just been clicked, and therefore we are awaiting the right hand side
-let awaitingRightInput = false;
+// Whether the value should be overwritten if a digit is input
+let shouldOverwriteValue = false;
 
 // Whether a decimal point has been inputted for the current number
 let decimal = false;
@@ -71,11 +71,11 @@ function setActiveOperation(op) {
  * @param {number} n the new number
  */
 function number(n) {
-  if (value === "0" || awaitingRightInput) {
+  if (value === "0" || shouldOverwriteValue) {
     // Start a new number
     setValue(n.toString());
     removeActiveOperationAppearance();
-    awaitingRightInput = false;
+    shouldOverwriteValue = false;
     decimal = false;
   } else {
     // Add to the existing number
@@ -100,7 +100,7 @@ function point() {
 function operation(op) {
   setActiveOperation(op);
   leftValue = value;
-  awaitingRightInput = true;
+  shouldOverwriteValue = true;
 }
 
 /**
@@ -165,4 +165,5 @@ function negate() {
  */
 function percentageToDecimal() {
   setValue((parseFloat(value) / 100).toString());
+  shouldOverwriteValue = true;
 }
