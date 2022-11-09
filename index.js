@@ -167,7 +167,11 @@ function c() {
  * Negates the current value, and updates the user interface accordingly
  */
 function negate() {
-  setValue(`-${value}`);
+  if (value[0] === "-") {
+    setValue(value.substring(1));
+  } else {
+    setValue(`-${value}`);
+  }
 }
 
 /**
