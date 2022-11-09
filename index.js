@@ -35,7 +35,7 @@ function setValue(newValue) {
   }
 
   // Update the text on the clear button
-  document.getElementById("clear").innerText = value == "0" ? "AC" : "C";
+  document.getElementById("clear").innerText = value == "0" || value == "-0" ? "AC" : "C";
 }
 
 /**
