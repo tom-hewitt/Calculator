@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+
+  background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calculator {
+  height: 100%;
+  width: 51vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  padding: 5vh;
+}
+
+.display {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  padding: 3vh;
+}
+
+#value {
+  font-size: 8vh;
+  font-family: 'Inter', sans-serif;
+  color: white;
+
+  text-align: right;
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: 12vh 12vh 12vh 12vh;
+  grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
+  grid-gap: 1vh;
+}
+
+button {
+  border-radius: 6vh;
+
+  background-color: dimgrey;
+  color: white;
+
+  font-size: 4vh;
+  font-family: 'Inter', sans-serif;
+
+  border: none;
+
+  opacity: 0.8;
+
+  transition: 0.1s;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.operation {
+  background-color: orange;
+}
+
+.action {
+  background-color: silver;
+  color: black;
+}
+
+.active {
+  background-color: white;
+  color: orange;
+  opacity: 1;
+}
+
+#zero {
+  grid-column: 1 / 3;
+}
