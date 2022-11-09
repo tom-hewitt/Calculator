@@ -157,12 +157,12 @@ function c() {
  * Negates the current value, and updates the user interface accordingly
  */
 function negate() {
-  setValue(-value);
+  setValue((-parseFloat(value)).toString());
 }
 
 /**
  * Converts the current value from percentage to decimal, and updates the user interface accordingly
  */
 function percentageToDecimal() {
-  setValue(value / 100);
+  setValue((parseFloat(value) / 100).toString());
 }
